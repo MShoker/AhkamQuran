@@ -8,8 +8,12 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:gravity="right|center_vertical"
         android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="18sp"
+        android:textColor="@color/listitem"
+        android:textStyle="bold"
+       />
 
 </LinearLayout>

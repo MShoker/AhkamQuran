@@ -3,6 +3,8 @@ package com.shoker.ahkamquran;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -18,6 +20,8 @@ import androidx.core.app.NavUtils;
 
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import static com.shoker.ahkamquran.ItemListActivity.interstitialAd;
 
 /**
  * An activity representing a single Item detail screen. This
@@ -74,11 +78,28 @@ public class ItemDetailActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            NavUtils.navigateUpTo(this, new Intent(this, ItemListActivity.class));
+           // NavUtils.navigateUpTo(this, new Intent(this, ItemListActivity.class));
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (interstitialAd.isLoaded()) {
+            interstitialAd.show();
+            interstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    interstitialAd.loadAd(new AdRequest.Builder().build());
+                    super.onAdClosed();
+                    finish();
+                }
+            });
+        }else{
+            super.onBackPressed();
+        }
 
+    }
 }

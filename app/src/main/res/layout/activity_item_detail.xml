@@ -29,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:layout_marginRight="@dimen/text_margin"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -40,6 +41,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
  
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
